@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://etynso.github.io/sitemap.xml
