@@ -1,4 +1,4 @@
-baseURL = ""https://etynso.github.io/""
+baseURL = "https://etynso.github.io/"
 languageCode = "en"
 title = "Etynso's Blog"
 enableRobotsTXT = true
