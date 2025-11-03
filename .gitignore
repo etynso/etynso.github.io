@@ -1,0 +1,26 @@
+# Hugo build files
+/public/
+/resources/
+/hugo_stats.json
+
+# Node or theme dependencies (if ever added)
+/node_modules/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDE / local tooling
+.vscode/
+.idea/
+*.log
+
+# Backup or temporary files
+*.bak
+*.tmp
+*~
+
+# Deployment branches or CI cache
+gh-pages/

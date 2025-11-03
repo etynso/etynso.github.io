@@ -1,0 +1,36 @@
+colorScheme = "avocado"
+defaultAppearance = "dark"
+autoSwitchAppearance = true
+enableSearch = true
+enableCodeCopy = true
+mainSections = ["posts"]
+
+[header]
+layout = "fixed-fill-blur" 
+
+[homepage]
+layout = "background"
+homepageImage = "img/background.jpg"
+showRecent = true
+cardView = false
+cardViewScreenWidth = false
+showMoreLink = true
+showMoreLinkDest = "/posts"
+layoutBackgroundBlur = true
+
+[article]
+showHero = true
+heroStyle = "background"
+layoutBackgroundBlur = true
+showTableOfContents = true
+showReadingTime = true
+showBreadcrumbs = true
+
+[list]
+showHero = true
+constrainItemsWidth = true
+heroStyle = "background"
+layoutBackgroundBlur = true
+
+[taxonomy]
+showTermCount = true

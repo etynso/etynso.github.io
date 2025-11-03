@@ -1,0 +1,10 @@
+title = "Home"
+
+[params.author]
+name = "Etynso"
+image = "https://cdn.discordapp.com/avatars/227017299939426304/b39b5997fa7a6847c18ff2db782e38cc.png?size=480"
+headline = "Chill Guy"
+bio = "Write-ups, notes, and other stuffs."
+links = [
+  { discordapp = "https://discordapp.com/users/227017299939426304" }
+]

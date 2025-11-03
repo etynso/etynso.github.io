@@ -1,0 +1,16 @@
+baseURL = ""https://etynso.github.io/""
+languageCode = "en"
+title = "Etynso's Blog"
+enableRobotsTXT = true
+theme = "blowfish"
+
+# Blowfish search requires JSON on home
+[outputs]
+home = ["HTML","RSS","JSON"]
+
+# Tags only
+[taxonomies]
+tag = "tags"
+
+# (Optional for GitHub Pages "docs" method)
+# publishDir = "docs"
