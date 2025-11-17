@@ -439,7 +439,7 @@ print(b"".join(tmp2))
 
 {{< /details >}}
 
-# Schematics CTF 2025
+## Schematics CTF 2025
 
 Again, Schematics CTF 2025 is an event which i didn't participate in due to conflict with another CTF, the qualification stage challs weren't that interesting. I dm'd the author regarding the final stage challenge to ~~assert dominance~~ **learn from them** and i found one of them to be quite interesting
 
