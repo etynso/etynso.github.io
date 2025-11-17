@@ -15,7 +15,7 @@ Recently, two local CTFs were held which I didn't have the chance to participate
 
 ## Wreck IT CTF 6.0
 
-I didn't participate in Wreck IT CTF 6.0 which was open to public, but I "participated" via discord chat with the crypto legend `azuketto`. Until the end of the CTF only 1/4 crypto challs had any solve (and of course it had one solve). For this writeup I will be covering 2 challenges on AES CBC which I find to be a fresh breath of air amidst all the number theory stuff, as it had been a while since block cipher challenges appeared in local CTFs.
+I didn't participate in Wreck IT CTF 6.0 which was open to public, but I "participated" via discord chat with the author, crypto legend `azuketto`. Until the end of the CTF only 1/4 crypto challs had any solve (and of course it had one solve). For this writeup I will be covering 2 challenges on AES CBC which I find to be a fresh breath of air amidst all the number theory stuff, as it had been a while since block cipher challenges appeared in local CTFs.
 
 ![Azuketto Gives Chall](/images/unsolved_1/wreckit-discord.png)
 
