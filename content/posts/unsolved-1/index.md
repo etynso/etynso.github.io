@@ -584,11 +584,9 @@ Okay, combined with the fact that we're given 96 signatures from 64 bit integers
 
 However, subset product (even under modulo N) can be turned into subset sum via logarithm, this is showcased in an obvious manner by `Zyan` on the chall [LoveLinhaLot](https://zayn.id.vn/posts/2024/2024-10-23-ascis-ctf/) on Vietnam ASCIS CTF Final 2024, as well as more recently by `Whale120` on chall [Republic of Geese](https://blog.whale-tw.com/2025/10/19/qnqsec-ctf-2025/#Republic-of-Geese) in QnQsec ctf 2025.
 
-The difference however is that in both of those we're working with discrete logarithm, while in this challenge clearly it's impossible to solve discrete logarithm mod N. However, the trick is that we don't need to do discrete logarithm, as our prefix is only 64 bits, while the modulo is 4096 bits, this means we can set our target to be 4064 bits, and there should be many solutions such that the top 64 bits are the same
-
 #### Subset Product → Subset Sum
 
-Before going further, let me clarify the “subset product → subset sum using logarithms” thing a bit more. In any multiplicative group \\(G\\), if you have elements \\(g_i\\) and you want to pick a subset whose product equals some target \\(g\\), the natural way to linearize the problem is to take logarithms:
+Let's explore the “subset product → subset sum using logarithms” thing a bit more. In any multiplicative group \\(G\\), if you have elements \\(g_i\\) and you want to pick a subset whose product equals some target \\(g\\), the natural way to linearize the problem is to take logarithms:
 
 \\[
 \log(g) = \log\left(\prod g_i^{c_i}\right) = \sum c_i \cdot \log(g_i)
@@ -604,7 +602,7 @@ The *concept* is identical — the logarithm converts multiplication into additi
 
 In the previous CTF challenges (LoveLinhaLot and Republic of Geese), the trick worked because the challenge structure let you exploit discrete logs. But here, computing discrete log mod \\(N\\\) is impossible.
 
-The key observation — and the reason we can still use the trick anyway — is that **we don’t need exact equality in the group**.  
+The key observation and the reason we can still use the trick anyway, is that **we don’t need exact equality in the group**.  
 The RSA verification only checks the **first 8 bytes** of the decoded value.  
 So instead of solving:
 
@@ -615,7 +613,7 @@ So instead of solving:
 we only need:
 
 - the **top 64 bits** to match,
-- the remaining ~4064 bits can be anything.
+- the remaining bits can be anything.
 
 This huge slack means we can safely treat the \\(h_i\\\) values as regular integers and use **real-valued logarithms**:
 
@@ -628,15 +626,6 @@ Then solve the approximate subset sum:
 \\[
 \sum c_i \cdot \log(h_i) \approx \log(H_{\text{target}} \ll 4000)
 \\]
-
-The goal is simply to get the *magnitude* right.  
-Once we find coefficients \\(c_i\\) making the real-valued sum land in the right interval, the actual modular product:
-
-\\[
-\prod h_i^{c_i} \bmod N
-\\]
-
-tends to fall in the range whose **top 64 bits** match the needed prefix, because many such integers exist.
 
 So, we just have to solve the subset sum problem which can be done via lattice method! Initially, i tried to construct my own lattice and reducing that, but, i end up getting negative coefficients which sadly won't work since those negative coefficients correspond to division in real numbers which is an operation that we can't mirror mod n (at least in terms of keeping the prefix). After trying to configure the lattice for a bit using CVP to get all positive solutions and failing miserably, i decided to ACTUALLY learn the correct way to solve this problem which is by using Integer Linear Programming (ILP). Thankfully, we just use [Blupper's implementation](https://github.com/TheBlupper/linineq/) and find out it's super easy to use and after a bit of parameter tuning eventually gets a solution that works about 90% of the time and < 10 seconds in local :D
 
