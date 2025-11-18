@@ -602,9 +602,7 @@ The *concept* is identical — the logarithm converts multiplication into additi
 
 In the previous CTF challenges (LoveLinhaLot and Republic of Geese), the trick worked because the challenge structure let you exploit discrete logs. But here, computing discrete log mod \\(N\\\) is impossible.
 
-The key observation and the reason we can still use the trick anyway, is that **we don’t need exact equality in the group**.  
-The RSA verification only checks the **first 8 bytes** of the decoded value.  
-So instead of solving:
+The key observation and the reason we can still use the trick anyway, is that the elements that we're multiplying are all small compared to the modulo and we only need the top 64 bits to match! this allows us to target a product which is less than N, so the modulo wrap never happens
 
 \\[
 \prod h_i^{c_i} = H_{\text{target}} \pmod{N}
@@ -615,7 +613,7 @@ we only need:
 - the **top 64 bits** to match,
 - the remaining bits can be anything.
 
-This huge slack means we can safely treat the \\(h_i\\\) values as regular integers and use **real-valued logarithms**:
+This means we can just do the transformations but with **real-valued logarithms**:
 
 \\[
 \log(h_i) \in \mathbb{R}
